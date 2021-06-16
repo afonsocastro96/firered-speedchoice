@@ -205,7 +205,7 @@ const u8 gSpeedchoiceOptionMaxVision[] = _("MAX VISION");
 const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 
 // PAGE 3
-const u8 gSpeedchoiceOptionEasyFalseSwipe[] = _("EASY FALSE SWIPE");
+const u8 gSpeedchoiceOptionEasySweetScent[] = _("EASY SWEET SCENT");
 const u8 gSpeedchocieOptionEasyDexRewards[] = _("EASY DEX REWARDS");
 const u8 gSpeedchoiceOptionFastCatch[] = _("FAST CATCH");
 const u8 gSpeedchoiceOptionEarlyBike[] = _("EARLY BIKE");
@@ -243,7 +243,7 @@ const u8 gSpeedchoiceTooltipSpinners[] = _("PURGE: Makes spinners on a static\ns
 const u8 gSpeedchoiceTooltipMaxVision[] = _("SANE: Will extend trainer vision\nto 8, but prevent trainers from\pwalking through walls or solid\nobjects.\pHELL: No collision or\nelevation detection.");
 const u8 gSpeedchoiceTooltipGoodEarlyWilds[] = _("SAME: Depending on the\nrandomizer check value, wild\pencounters in the grass for\n{PKMN} below lv 10 will have\ltheir final evolution.\pRAND: If they have a branching\nevolution, it will be randomly\lgenerated instead of being static.");
 const u8 gSpeedchoiceTooltipEarlySurf[] = _("Receive HM03 from Rival 2\ninstead of FAME CHECKER.");
-const u8 gSpeedchoiceTooltipEasyFalseSwipe[] = _("Makes FALSE SWIPE guaranteed\nOFF: Vanilla game behavior\pTUTOR: The tutor in Silph 2F teaches\nFALSE SWIPE.\pHM05: Replaces HM05 FLASH with\nHM05 FALSE SWIPE.");
+const u8 gSpeedchoiceTooltipEasySweetScent[] = _("Makes SWEET SCENT guaranteed\nOFF: Vanilla game behavior\pTUTOR: The tutor in Silph 2F teaches\nSWEET SCENT.\pHM05: Replaces HM05 FLASH with\nHM05 SWEET SCENT.");
 const u8 gSpeedchoiceTooltipFastCatch[] = _("All Pokeballs are guaranteed to\ncatch.");
 const u8 gSpeedchoiceTooltipEarlyBike[] = _("Start game with Bicycle.");
 const u8 gSpeedchoiceTooltipGen7XItems[] = _("Stat boost +2 instead of +1.");
@@ -299,7 +299,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EARLYSURF]        = EARLY_SURF_NO,
         [MAXVISION]        = MAX_OFF,
         [GOOD_EARLY_WILDS] = GOOD_OFF,
-        [EASY_FALSE_SWIPE] = EASY_FALSE_SWIPE_OFF,
+        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_OFF,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_OFF,
         [FAST_CATCH]       = FAST_CATCH_OFF,
         [EARLY_BIKE]       = EARLY_BIKE_NO,
@@ -320,7 +320,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EARLYSURF]        = EARLY_SURF_YES,
         [MAXVISION]        = MAX_OFF,
         [GOOD_EARLY_WILDS] = GOOD_STATIC,
-        [EASY_FALSE_SWIPE] = EASY_FALSE_SWIPE_TUTOR,
+        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_TUTOR,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_ON,
         [FAST_CATCH]       = FAST_CATCH_OFF,
         [EARLY_BIKE]       = EARLY_BIKE_YES,
@@ -341,7 +341,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EARLYSURF]        = EARLY_SURF_YES,
         [MAXVISION]        = MAX_OFF,
         [GOOD_EARLY_WILDS] = GOOD_OFF,
-        [EASY_FALSE_SWIPE] = EASY_FALSE_SWIPE_TUTOR,
+        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_TUTOR,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_OFF,
         [FAST_CATCH]       = FAST_CATCH_ON,
         [EARLY_BIKE]       = EARLY_BIKE_YES,
@@ -362,7 +362,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EARLYSURF]        = EARLY_SURF_YES,
         [MAXVISION]        = MAX_OFF,
         [GOOD_EARLY_WILDS] = GOOD_STATIC,
-        [EASY_FALSE_SWIPE] = EASY_FALSE_SWIPE_TUTOR,
+        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_TUTOR,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_ON,
         [FAST_CATCH]       = FAST_CATCH_OFF,
         [EARLY_BIKE]       = EARLY_BIKE_YES,
@@ -566,18 +566,18 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
         .tooltip = gSpeedchoiceTooltipGoodEarlyWilds,
     },
     // ----------------------------------
-    // EASY FALSE SWIPE OPTION
+    // EASY SWEET SCENT OPTION
     // ----------------------------------
-    [EASY_FALSE_SWIPE] = {
-        .optionCount = EASY_FALSE_SWIPE_OPTION_COUNT,
+    [EASY_SWEET_SCENT] = {
+        .optionCount = EASY_SWEET_SCENT_OPTION_COUNT,
         .optionType = NORMAL,
         .enabled = TRUE,
-        .string = gSpeedchoiceOptionEasyFalseSwipe,
+        .string = gSpeedchoiceOptionEasySweetScent,
         .options = OptionChoiceConfigOffTutorHM,
-        .tooltip = gSpeedchoiceTooltipEasyFalseSwipe,
+        .tooltip = gSpeedchoiceTooltipEasySweetScent,
     },
     // ----------------------------------
-    // EASY FALSE SWIPE OPTION
+    // EASY SWEET SCENT OPTION
     // ----------------------------------
     [EASY_DEX_REWARDS] = {
         .optionCount = EASY_DEX_REWARDS_OPTION_COUNT,
@@ -726,7 +726,7 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
     gSaveBlock2Ptr->speedchoiceConfig.earlySurf = options_arr[EARLYSURF];
     gSaveBlock2Ptr->speedchoiceConfig.maxVision = options_arr[MAXVISION];
     gSaveBlock2Ptr->speedchoiceConfig.goodEarlyWilds = options_arr[GOOD_EARLY_WILDS];
-    gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe = options_arr[EASY_FALSE_SWIPE];
+    gSaveBlock2Ptr->speedchoiceConfig.easySweetScent = options_arr[EASY_SWEET_SCENT];
     gSaveBlock2Ptr->speedchoiceConfig.easyDexRewards = options_arr[EASY_DEX_REWARDS];
     gSaveBlock2Ptr->speedchoiceConfig.fastCatch = options_arr[FAST_CATCH];
     gSaveBlock2Ptr->speedchoiceConfig.earlyBike = options_arr[EARLY_BIKE];
@@ -776,8 +776,8 @@ u8 CheckSpeedchoiceOption(u8 option)
         return gSaveBlock2Ptr->speedchoiceConfig.maxVision;
     case GOOD_EARLY_WILDS:
         return gSaveBlock2Ptr->speedchoiceConfig.goodEarlyWilds;
-    case EASY_FALSE_SWIPE:
-        return gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe;
+    case EASY_SWEET_SCENT:
+        return gSaveBlock2Ptr->speedchoiceConfig.easySweetScent;
     case EASY_DEX_REWARDS:
         return gSaveBlock2Ptr->speedchoiceConfig.easyDexRewards;
     case FAST_CATCH:

@@ -169,7 +169,7 @@ s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
     s32 mapSecId;
     u16 dexAreaSubspriteIdx;
     s32 dexAreaEntryLUTidx;
-    s32 seviiAreas;
+//    s32 seviiAreas;
 //    s32 alteringCaveCount;
 //    s32 alteringCaveNum;
     s32 i;
@@ -181,8 +181,10 @@ s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
         areaCount = CountRoamerNests(species, subsprites);
     }
 
-    seviiAreas = GetUnlockedSeviiAreas();
+
     // Speedchoice change: Ignore Altering Cave
+    // Sceptross change: Ignore unlocked Sevii Areas
+//    seviiAreas = GetUnlockedSeviiAreas();
 //    alteringCaveCount = 0;
 //    alteringCaveNum = VarGet(VAR_ALTERING_CAVE_WILD_SET);
 //    if (alteringCaveNum > 8)
@@ -208,8 +210,8 @@ s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
             }
             for (j = 0; j < NELEMS(sSeviiDexAreas); j++)
             {
-                if ((seviiAreas >> j) & 1)
-                {
+                //if ((seviiAreas >> j) & 1)
+                //{
                     dexAreaEntryLUTidx = 0;
                     while (TryGetMapSecPokedexAreaEntry(mapSecId, sSeviiDexAreas[j].lut, sSeviiDexAreas[j].count, &dexAreaEntryLUTidx, &dexAreaSubspriteIdx))
                     {
@@ -218,7 +220,7 @@ s32 BuildPokedexAreaSubspriteBuffer(u16 species, struct Subsprite * subsprites)
                             SetAreaSubsprite(areaCount++, dexAreaSubspriteIdx, subsprites);
                         }
                     }
-                }
+                //}
             }
             if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup && gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
             {

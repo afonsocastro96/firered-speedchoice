@@ -114,7 +114,23 @@ static u8 ChooseWildMonIndex_Land(void)
         return 11;
 }
 
-static u8 ChooseWildMonIndex_WaterRock(void)
+static u8 ChooseWildMonIndex_Rock(void)
+{
+    u8 rand = Random() % ENCOUNTER_CHANCE_ROCK_SMASH_MONS_TOTAL;
+
+    // 60/40 for new wild encounter table
+
+    if(TRUE)
+    {
+        if(rand < 60)
+            return 0;
+        else
+            return 1;
+    }
+
+}
+
+static u8 ChooseWildMonIndex_Water(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
 
@@ -382,10 +398,10 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo * info, u8 area, u8
         slot = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:
-        slot = ChooseWildMonIndex_WaterRock();
+        slot = ChooseWildMonIndex_Water();
         break;
     case WILD_AREA_ROCKS:
-        slot = ChooseWildMonIndex_WaterRock();
+        slot = ChooseWildMonIndex_Rock();
         break;
     }
     level = ChooseWildMonLevel(&info->wildPokemon[slot]);
@@ -655,7 +671,7 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     else if (landMonsInfo == NULL && waterMonsInfo != NULL)
     {
         *isWaterMon = TRUE;
-        return waterMonsInfo->wildPokemon[ChooseWildMonIndex_WaterRock()].species;
+        return waterMonsInfo->wildPokemon[ChooseWildMonIndex_Water()].species;
     }
     // Either land or water Pokemon
     if ((Random() % 100) < 80)
@@ -665,7 +681,7 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     else
     {
         *isWaterMon = TRUE;
-        return waterMonsInfo->wildPokemon[ChooseWildMonIndex_WaterRock()].species;
+        return waterMonsInfo->wildPokemon[ChooseWildMonIndex_Water()].species;
     }
 }
 
@@ -678,7 +694,7 @@ u16 GetLocalWaterMon(void)
         const struct WildPokemonInfo * waterMonsInfo = gWildMonHeaders[headerId].waterMonsInfo;
 
         if (waterMonsInfo)
-            return waterMonsInfo->wildPokemon[ChooseWildMonIndex_WaterRock()].species;
+            return waterMonsInfo->wildPokemon[ChooseWildMonIndex_Water()].species;
     }
     return SPECIES_NONE;
 }

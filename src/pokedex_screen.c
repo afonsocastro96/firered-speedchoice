@@ -3068,12 +3068,12 @@ u8 DexScreen_DrawMonAreaPage(void)
     FillBgTilemapBufferRect_Palette0(1, 0, 0, 0, 30, 20);
 
     sPokedexScreenData->unlockedSeviiAreas = GetUnlockedSeviiAreas();
-    kantoMapVoff = 4;
+    kantoMapVoff = 0;
     // If any of the postgame islands are unlocked, Kanto map needs to be flush with the
     // top of the screen.
-    for (i = 3; i < 7; i++)
-        if ((sPokedexScreenData->unlockedSeviiAreas >> i) & 1)
-            kantoMapVoff = 0;
+    //for (i = 3; i < 7; i++)
+    //    if ((sPokedexScreenData->unlockedSeviiAreas >> i) & 1)
+    //        kantoMapVoff = 0;
 
     sPokedexScreenData->windowIds[0] = AddWindow(&sWindowTemplate_AreaMap_Kanto);
     CopyToWindowPixelBuffer(sPokedexScreenData->windowIds[0], (void *)sTilemap_AreaMap_Kanto, 0, 0);
@@ -3081,7 +3081,7 @@ u8 DexScreen_DrawMonAreaPage(void)
                        GetWindowAttribute(sPokedexScreenData->windowIds[0], WINDOW_TILEMAP_TOP) + kantoMapVoff);
     PutWindowTilemap(sPokedexScreenData->windowIds[0]);
     for (i = 0; i < 7; i++)
-        if ((sPokedexScreenData->unlockedSeviiAreas >> i) & 1)
+        //if ((sPokedexScreenData->unlockedSeviiAreas >> i) & 1)
         {
             sPokedexScreenData->windowIds[i + 1] = AddWindow(sAreaMapStructs_SeviiIslands[i].window);
             CopyToWindowPixelBuffer(sPokedexScreenData->windowIds[i + 1], sAreaMapStructs_SeviiIslands[i].tiles, 0, 0);

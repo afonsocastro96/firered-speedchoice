@@ -1928,8 +1928,8 @@ static u16 GetTutorMove(u8 tutor)
     case MOVETUTOR_HYDRO_CANNON:
         return MOVE_HYDRO_CANNON;
     case MOVETUTOR_THUNDER_WAVE:
-        if (gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe == EASY_FALSE_SWIPE_TUTOR)
-            return MOVE_FALSE_SWIPE;
+        if (gSaveBlock2Ptr->speedchoiceConfig.easySweetScent == EASY_SWEET_SCENT_TUTOR)
+            return MOVE_SWEET_SCENT;
         // fallthrough
     default:
         return sTutorMoves[tutor];
@@ -4766,8 +4766,8 @@ void ItemUseCB_PPUp(u8 taskId, UNUSED TaskFunc func)
 
 static inline u16 GetTMHMMove(u16 tmNumber)
 {
-    if (tmNumber == NUM_TECHNICAL_MACHINES + 5 && gSaveBlock2Ptr->speedchoiceConfig.easyFalseSwipe == EASY_FALSE_SWIPE_HM05)
-        return MOVE_FALSE_SWIPE;
+    if (tmNumber == NUM_TECHNICAL_MACHINES + 5 && gSaveBlock2Ptr->speedchoiceConfig.easySweetScent == EASY_SWEET_SCENT_HM05)
+        return MOVE_SWEET_SCENT;
     return sTMHMMoves[tmNumber];
 }
 

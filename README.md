@@ -5,6 +5,14 @@ This project is based on the disassembly of Pokémon FireRed and LeafGreen.
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
 ## Changelog
+
+### Sceptross' changes:
+- Sevii Islands Dex entries are now accessible from the beginning
+- The SS Anne patch of water no longer generates encounters (which would become inacessible upon leaving the boat)
+- "Easy False Swipe" has been changed to "Easy Sweet Scent", and TM27 is back to being Return
+- Rock Smash only generates 2 encounters, with 60 and 40 percent probability each
+- The introduction screen has been restored to be the same as vanilla
+
 ### 1.0.0a0
 - Ported the speedchoice menu from [Emerald](https://github.com/ProjectRevoTPP/pokeemerald-speedchoice)
 - Ported the Done Button from Emerald

@@ -26,7 +26,7 @@
 #define EARLYSURF            7
 #define MAXVISION            8
 #define GOOD_EARLY_WILDS     9
-#define EASY_FALSE_SWIPE    10
+#define EASY_SWEET_SCENT    10
 #define EASY_DEX_REWARDS    11
 #define FAST_CATCH          12
 #define EARLY_BIKE          13
@@ -111,13 +111,13 @@
 #define GOOD_OPTION_COUNT 3
 
 // ----------------------
-// EASY FALSE SWIPE ENUM
+// EASY SWEET SCENT ENUM
 // ----------------------
 
-#define EASY_FALSE_SWIPE_OFF 0
-#define EASY_FALSE_SWIPE_TUTOR 1
-#define EASY_FALSE_SWIPE_HM05 2
-#define EASY_FALSE_SWIPE_OPTION_COUNT 3
+#define EASY_SWEET_SCENT_OFF 0
+#define EASY_SWEET_SCENT_TUTOR 1
+#define EASY_SWEET_SCENT_HM05 2
+#define EASY_SWEET_SCENT_OPTION_COUNT 3
 
 // ----------------------
 // EASY DEX REWARDS ENUM
