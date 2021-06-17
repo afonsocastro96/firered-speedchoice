@@ -10,8 +10,10 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 - Sevii Islands Dex entries are now accessible from the beginning
 - The SS Anne patch of water no longer generates encounters (which would become inacessible upon leaving the boat)
 - "Easy False Swipe" has been changed to "Easy Sweet Scent", and TM27 is back to being Return
+- Sweet Scent's animation has been removed for faster usage
 - Rock Smash only generates 2 encounters, with 60 and 40 percent probability each
-- The introduction screen has been restored to be the same as vanilla
+- Fixed bug in which it was HM06 instead of HM05 being replaced in "Easy False Swipe"/"Easy Sweet Scent"
+- The introduction screen has been restored into being the same one as vanilla
 
 ### 1.0.0a0
 - Ported the speedchoice menu from [Emerald](https://github.com/ProjectRevoTPP/pokeemerald-speedchoice)

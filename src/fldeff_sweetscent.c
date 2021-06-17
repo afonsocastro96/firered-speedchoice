@@ -50,11 +50,12 @@ static void StartSweetScentFieldEffect(void)
 {
     u8 taskId;
 
-    PlaySE(SE_M_SWEET_SCENT);
-    sPlttBufferBak = (u8 *)Alloc(PLTT_SIZE);
-    CpuFastCopy(gPlttBufferUnfaded, sPlttBufferBak, PLTT_SIZE);
-    CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_SIZE);
-    BeginNormalPaletteFade(~(1 << (gSprites[GetPlayerAvatarObjectId()].oam.paletteNum + 16)), 4, 0, 8, RGB(31, 0, 0));
+    //Remove sweet scent animation for the speedchoice ROM 
+    //PlaySE(SE_M_SWEET_SCENT);
+    //sPlttBufferBak = (u8 *)Alloc(PLTT_SIZE);
+    //CpuFastCopy(gPlttBufferUnfaded, sPlttBufferBak, PLTT_SIZE);
+    //CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_SIZE);
+    //BeginNormalPaletteFade(~(1 << (gSprites[GetPlayerAvatarObjectId()].oam.paletteNum + 16)), 4, 0, 8, RGB(31, 0, 0));
     taskId = CreateTask(TrySweetScentEncounter, 0);
     gTasks[taskId].data[0] = 0;
     FieldEffectActiveListRemove(FLDEFF_SWEET_SCENT);
