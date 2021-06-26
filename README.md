@@ -12,6 +12,8 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 - "Easy False Swipe" has been changed to "Easy Sweet Scent", and TM27 is back to being Return
 - Sweet Scent's animation has been removed for faster usage
 - Rock Smash only generates 2 encounters, with 60 and 40 percent probability each
+- Surfing only generates 3 encounters, with 50, 30, and 20 percent probability each
+- Fishing only generates 2 encounters, which are the same across all 3 rods, with 60 and 40 percent probability each.
 - Fixed bug in which it was HM06 instead of HM05 being replaced in "Easy False Swipe"/"Easy Sweet Scent"
 - The introduction screen has been restored into being the same one as vanilla
 
