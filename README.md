@@ -10,6 +10,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 - Sevii Islands Dex entries are now accessible from the beginning
 - The SS Anne patch of water no longer generates encounters (which would become inacessible upon leaving the boat)
 - "Easy False Swipe" has been changed to "Easy Sweet Scent", and TM27 is back to being Return
+- Add possilibity to choose gender in the Speedchoice menu
 - Sweet Scent's animation has been removed for faster usage
 - Rock Smash only generates 2 encounters, with 60 and 40 percent probability each
 - Surfing only generates 3 encounters, with 50, 30, and 20 percent probability each
