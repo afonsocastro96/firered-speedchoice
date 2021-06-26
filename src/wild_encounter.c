@@ -125,19 +125,19 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 
     if (TRUE)
     {
-        // slot 1 (30%) -- used for the common slot
+        // slot 1 (30%) -- used for the common slot in water / common in rock smash
         if(rand < 30)
             return 0;
-        // slot 2 (20%) -- used for the uncommon slot
+        // slot 2 (20%) -- used for the uncommon slot in water / common in rock smash
         if(rand >= 30 && rand < 50)
             return 1;
-        // slot 3 (20%) -- used for the rare slot
+        // slot 3 (20%) -- used for the rare slot / uncommon in rock smash
         if(rand >= 50 && rand < 70)
             return 2;
-        // slot 4 (20%) -- used for the common slot
+        // slot 4 (20%) -- used for the common slot / uncommon in rock smash
         if(rand >= 70 && rand < 90)
             return 3;
-        // slot 5 (10%) -- used for the uncommon slot
+        // slot 5 (10%) -- used for the uncommon slot / common in rock smash
         return 4; // 10%
     }
 

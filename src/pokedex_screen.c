@@ -358,8 +358,10 @@ static const struct ListMenuTemplate sListMenuTemplate_KantoDexModeSelect = {
 
 static const struct ListMenuItem sListMenuItems_NatDexModeSelect[] = {
     {gText_PokemonList,                  LIST_HEADER},
+    {gText_AToZMode,                     DEX_MODE(ATOZ)},
     {gText_NumericalModeKanto,           DEX_MODE(NUMERICAL_KANTO)},
     {gText_NumericalModeNational,        DEX_MODE(NUMERICAL_NATIONAL)},
+    {gText_TypeMode,                     DEX_MODE(TYPE)},
     {gText_PokemonHabitats,              LIST_HEADER},
     {gText_DexCategory_GrasslandPkmn,    DEX_CATEGORY_GRASSLAND},
     {gText_DexCategory_ForestPkmn,       DEX_CATEGORY_FOREST},
@@ -371,8 +373,6 @@ static const struct ListMenuItem sListMenuItems_NatDexModeSelect[] = {
     {gText_DexCategory_UrbanPkmn,        DEX_CATEGORY_URBAN},
     {gText_DexCategory_RarePkmn,         DEX_CATEGORY_RARE},
     {gText_Search,                       LIST_HEADER},
-    {gText_AToZMode,                     DEX_MODE(ATOZ)},
-    {gText_TypeMode,                     DEX_MODE(TYPE)},
     {gText_LightestMode,                 DEX_MODE(LIGHTEST)},
     {gText_SmallestMode,                 DEX_MODE(SMALLEST)},
     {gText_PokedexOther,                 LIST_HEADER},
