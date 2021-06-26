@@ -119,32 +119,29 @@ static u8 ChooseWildMonIndex_WaterRock(void)
 {
     u8 rand = Random() % ENCOUNTER_CHANCE_WATER_MONS_TOTAL;
 
-    // 35/25/15/15/10 for new wild encounter table
+    // 50/30/20 for new wild encounter table
     // 60/40 for new rock smash encounter table
     // Note: logic for better slots for rock smash is on the randomiser
 
     if (TRUE)
     {
-        // COMMONS
-        // slot 1 (35%)
-        if(rand < 35) // 35%
+        // slot 1 (30%) -- used for the common slot
+        if(rand < 30)
             return 0;
-        // slot 2 (25%)
-        if(rand >= 35 && rand < 60) // 25%
+        // slot 2 (20%) -- used for the uncommon slot
+        if(rand >= 30 && rand < 50)
             return 1;
-
-        // UNCOMMONS
-        // slot 3 (15%)
-        if(rand >= 60 && rand < 75) // 15%
+        // slot 3 (20%) -- used for the rare slot
+        if(rand >= 50 && rand < 70)
             return 2;
-        // slot 4 (15%)
-        if(rand >= 75 && rand < 90) // 15%
+        // slot 4 (20%) -- used for the common slot
+        if(rand >= 70 && rand < 90)
             return 3;
-
-        // RARE
-        // slot 5 (10%)
+        // slot 5 (10%) -- used for the uncommon slot
         return 4; // 10%
     }
+
+    /*
     if (rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_0)
         return 0;
     else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_1)
@@ -154,7 +151,7 @@ static u8 ChooseWildMonIndex_WaterRock(void)
     else if (rand >= ENCOUNTER_CHANCE_WATER_MONS_SLOT_2 && rand < ENCOUNTER_CHANCE_WATER_MONS_SLOT_3)
         return 3;
     else
-        return 4;
+        return 4;*/
 }
 
 enum
