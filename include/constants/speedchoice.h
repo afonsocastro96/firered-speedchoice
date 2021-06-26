@@ -18,25 +18,26 @@
 
 #define PRESET               0
 #define PLAYER_NAME_SET      1
-#define EXPMATH              2
-#define PLOTLESS             3
-#define EARLY_SAFFRON        4
-#define RACE_GOAL            5
-#define SPINNERS             6
-#define EARLYSURF            7
-#define MAXVISION            8
-#define GOOD_EARLY_WILDS     9
-#define EASY_SWEET_SCENT    10
-#define EASY_DEX_REWARDS    11
-#define FAST_CATCH          12
-#define EARLY_BIKE          13
-#define GEN_7_X_ITEMS       14
-#define EVO_EVERY_LEVEL     15
-#define HM_BADGE_CHECKS     16
-#define EASY_SURGE_CANS     17
-#define NERF_BROCK          18
+#define GENDER               2
+#define EXPMATH              3
+#define PLOTLESS             4
+#define EARLY_SAFFRON        5
+#define RACE_GOAL            6
+#define SPINNERS             7
+#define EARLYSURF            8
+#define MAXVISION            9
+#define GOOD_EARLY_WILDS    10
+#define EASY_SWEET_SCENT    11
+#define EASY_DEX_REWARDS    12
+#define FAST_CATCH          13
+#define EARLY_BIKE          14
+#define GEN_7_X_ITEMS       15
+#define EVO_EVERY_LEVEL     16
+#define HM_BADGE_CHECKS     17
+#define EASY_SURGE_CANS     18
+#define NERF_BROCK          19
 
-#define CURRENT_OPTIONS_NUM 19
+#define CURRENT_OPTIONS_NUM 20
 // ----------------------
 // STATIC OPTIONS
 // ----------------------
@@ -55,6 +56,14 @@
 
 // We used to share the enums for options, but we don't anymore because it's confusing
 // as fuck. Please define enums for each option and have them match the option config.
+
+// ----------------------
+// GENDER ENUM
+// ----------------------
+
+#define GENDER_FEMALE 0
+#define GENDER_MALE 1
+#define GENDER_OPTION_COUNT 2
 
 // ----------------------
 // EXP ENUM

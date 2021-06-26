@@ -279,6 +279,7 @@ struct BattleTowerData // Leftover from R/S
 
 struct SpeedchoiceSaveOptions
 {
+    u32 gender:1;
     u32 expsystem:2;
     u32 raceGoal:2;
     u32 earlySaffron:2;

@@ -164,6 +164,9 @@ const u8 gSpeedchoiceTextNo[]     = _("NO");
 const u8 gSpeedchoiceTextOn[]     = _("ON");
 const u8 gSpeedchoiceTextOff[]    = _("OFF");
 
+const u8 gSpeedchoiceTextMale[]   = _("MALE");
+const u8 gSpeedchoiceTextFemale[]   = _("FEMALE");
+
 const u8 gSpeedchoiceTextNerf[]   = _("PURGE");
 const u8 gSpeedchoiceTextKeep[]   = _("KEEP");
 const u8 gSpeedchoiceTextHell[]   = _("HELL");
@@ -193,25 +196,26 @@ const u8 gSpeedchoiceTextE4R2[]   = _("E4R2");
 // PAGE 1
 const u8 gSpeedchoiceOptionPreset[] = _("PRESET");
 const u8 gSpeedchoiceOptionName[] = _("NAME");
+const u8 gSpeedchoiceOptionGender[] = _("GENDER");
 const u8 gSpeedchoiceOptionEXP[] = _("EXP");
 const u8 gSpeedchoiceOptionPlotless[] = _("PLOTLESS");
-const u8 gSpeedchoiceOptionEarlySaffron[] = _("EARLY SAFFRON");
 
 // PAGE 2
+const u8 gSpeedchoiceOptionEarlySaffron[] = _("EARLY SAFFRON");
 const u8 gSpeedchoiceOptionRaceGoal[] = _("RACE GOAL");
 const u8 gSpeedchoiceOptionSpinners[] = _("SPINNERS");
 const u8 gSpeedchoiceOptionEarlySurf[] = _("EARLY SURF");
 const u8 gSpeedchoiceOptionMaxVision[] = _("MAX VISION");
-const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 
 // PAGE 3
+const u8 gSpeedchoiceOptionGoodEarlyWilds[] = _("GOOD EARLY WILDS");
 const u8 gSpeedchoiceOptionEasySweetScent[] = _("EASY SWEET SCENT");
 const u8 gSpeedchocieOptionEasyDexRewards[] = _("EASY DEX REWARDS");
 const u8 gSpeedchoiceOptionFastCatch[] = _("FAST CATCH");
 const u8 gSpeedchoiceOptionEarlyBike[] = _("EARLY BIKE");
-const u8 gSpeedchoiceOptionGen7XItems[] = _("GEN 7 X ITEMS");
 
 // PAGE 4
+const u8 gSpeedchoiceOptionGen7XItems[] = _("GEN 7 X ITEMS");
 const u8 gSpeedchoiceOptionEvoEveryLv[] = _("EVO EVERY LV");
 const u8 gSpeedchoiceOptionHmBadgeChk[] = _("HM BADGE CHK");
 const u8 gSpeedchoiceOptionEasySurgeCans[] = _("EASY SURGE");
@@ -235,6 +239,7 @@ const u8 gSpeedchoiceTooltipExplanation[] = _("This is the Speedchoice menu wher
 // TOOLTIPS
 const u8 gSpeedchoiceTooltipPreset[] = _("Sets of predetermined options that\nhelp speedrunners quickly select\pa set of options for a type of\nspeedrunning category.");
 const u8 gSpeedchoiceTooltipName[] = _("Set your trainer name here.");
+const u8 gSpeedchoiceTooltipGender[] = _("Set your gender here.");
 const u8 gSpeedchoiceTooltipEXP[] = _("Modifies the experience system\nto the desired input.\pCan be Gen 5, or\nno exp at all.");
 const u8 gSpeedchoiceTooltipRaceGoal[] = _("Sets the endpoint of the race.\pMANUAL: Puts a DONE BUTTON\nin your bag.\pHOF: Elite Four Round 1\nE4R2: Elite Four Round 2");
 const u8 gSpeedchoiceTooltipEarlySaffron[] = _("Affects whether the guards have\ntheir thirst quenched after\lCERULEAN RIVAL.");
@@ -320,7 +325,7 @@ static const u8 gPresets[NUM_PRESETS][CURRENT_OPTIONS_NUM] = {
         [EARLYSURF]        = EARLY_SURF_NO,
         [MAXVISION]        = MAX_OFF,
         [GOOD_EARLY_WILDS] = GOOD_OFF,
-        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_TUTOR,
+        [EASY_SWEET_SCENT] = EASY_SWEET_SCENT_HM05,
         [EASY_DEX_REWARDS] = EASY_DEX_REWARDS_ON,
         [FAST_CATCH]       = FAST_CATCH_OFF,
         [EARLY_BIKE]       = EARLY_BIKE_YES,
@@ -396,6 +401,12 @@ const struct OptionChoiceConfig OptionChoiceConfigOnOff[] =
 {
     { 120, gSpeedchoiceTextOn  },
     { 150, gSpeedchoiceTextOff },
+};
+
+const struct OptionChoiceConfig OptionChoiceConfigGender[] =
+{
+    { 120, gSpeedchoiceTextFemale },
+    { 180, gSpeedchoiceTextMale },
 };
 
 const struct OptionChoiceConfig OptionChoiceConfigNerfKeep[] =
@@ -477,6 +488,20 @@ const struct SpeedchoiceOption SpeedchoiceOptions[CURRENT_OPTIONS_NUM + 1] = // 
         .options = NULL,
         .tooltip = gSpeedchoiceTooltipName,
     },
+
+    // ----------------------------------
+    // GENDER OPTION
+    // ----------------------------------
+
+    [GENDER] = {
+        .optionCount = GENDER_OPTION_COUNT,
+        .optionType = NORMAL,
+        .enabled = TRUE,
+        .string = gSpeedchoiceOptionGender,
+        .options = OptionChoiceConfigGender,
+        .tooltip = gSpeedchoiceTooltipGender,
+    },
+
     // ----------------------------------
     // EXP OPTION
     // ----------------------------------
@@ -718,6 +743,7 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
 {
     // this would be a for loop, but i want to use the fewest bits possible to
     // avoid shifting RAM too much: hence the ugly per-option saving.
+    gSaveBlock2Ptr->speedchoiceConfig.gender = options_arr[GENDER];
     gSaveBlock2Ptr->speedchoiceConfig.expsystem = options_arr[EXPMATH];
     gSaveBlock2Ptr->speedchoiceConfig.plotless = options_arr[PLOTLESS];
     gSaveBlock2Ptr->speedchoiceConfig.earlySaffron = options_arr[EARLY_SAFFRON];
@@ -744,8 +770,14 @@ void SetByteArrayToSaveOptions(const u8 * options_arr)
  */
 void SetOptionChoicesAndConfigFromPreset(const u8 *preset)
 {
+    // Gender should not be changed upon preset change, so we need to store its current value to restore it later
+    u8 gender = sSpeedchoice->config.optionConfig[GENDER];
+
     // set the local config for the current menu. Do NOT overwrite the preset!
     memcpy(sSpeedchoice->config.optionConfig + 1, preset + 1, CURRENT_OPTIONS_NUM - 1);
+
+    // Restore gender
+    sSpeedchoice->config.optionConfig[GENDER] = gender;
 
     SetByteArrayToSaveOptions(preset);
 }
@@ -760,6 +792,8 @@ u8 CheckSpeedchoiceOption(u8 option)
 {
     switch(option)
     {
+    case GENDER:
+        return gSaveBlock2Ptr->speedchoiceConfig.gender;
     case EXPMATH:
         return gSaveBlock2Ptr->speedchoiceConfig.expsystem;
     case RACE_GOAL:
@@ -1165,6 +1199,10 @@ u32 CalculateCheckValue(void)
     // do checkvalue increment for 32-bit value.
     for (checkValue = 0, i = 0, totalBitsUsed = 0; i < CURRENT_OPTIONS_NUM; i++)
     {
+        // Gender should not influence check value, proceed
+        if(i == GENDER)
+            continue;
+
         checkValue += sSpeedchoice->config.optionConfig[i] << totalBitsUsed;
         // Because MAX_CHOICES == 6, this is valid.
         // Otherwise we'd need to do some actual work.

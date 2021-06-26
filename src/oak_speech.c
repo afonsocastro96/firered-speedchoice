@@ -1074,7 +1074,10 @@ static void Task_OakSpeech17(u8 taskId)
         ClearDialogWindowAndFrame(0, TRUE);
         CreateFadeInTask(taskId, 2);
         data[3] = 48;
-        gSaveBlock2Ptr->playerGender = FEMALE;
+        if(gSaveBlock2Ptr->speedchoiceConfig.gender == GENDER_FEMALE)
+            gSaveBlock2Ptr->playerGender = FEMALE;
+        else
+            gSaveBlock2Ptr->playerGender = MALE;
         StringCopy7(gSaveBlock1Ptr->rivalName, sRivalNameChoices[Random() % NELEMS(sRivalNameChoices)]);
         SeedRngAndSetTrainerId();
         gTasks[taskId].func = Task_OakSpeech33;
