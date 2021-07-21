@@ -7,6 +7,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 ## Changelog
 
 ### Sceptross' changes:
+- The Tickets to the Sevii Islands are now given by the Warden upon turning in the Gold Teeth in Plotless mode
 - Sevii Islands Dex entries are now accessible from the beginning
 - The SS Anne patch of water no longer generates encounters (which would become inacessible upon leaving the boat)
 - "Easy False Swipe" has been changed to "Easy Sweet Scent", and TM27 is back to being Return
@@ -18,6 +19,8 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 - Fixed bug in which it was HM06 instead of HM05 being replaced in "Easy False Swipe"/"Easy Sweet Scent"
 - Moved "A to Z mode" and "Type mode" up in the Pokédex screen for more convenient usage
 - The introduction screen has been restored into being the same one as vanilla
+- Debug mode's moveset has been changed to be Cut, Fly, Strength and Surf
+- Added a routine for setting all Fly points as available from the beginning of the game for debug purposes
 
 ### 1.0.0a0
 - Ported the speedchoice menu from [Emerald](https://github.com/ProjectRevoTPP/pokeemerald-speedchoice)

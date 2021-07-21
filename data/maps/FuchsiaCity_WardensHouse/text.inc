@@ -50,6 +50,9 @@ FuchsiaCity_WardensHouse_Text_ExplainStrength:: @ 819908A
     .string "Oh yes, did you find the SECRET\n"
     .string "HOUSE in the SAFARI ZONE?$"
 
+FuchsiaCity_WardensHouse_Text_PlotlessUnlockSeviiIslands::
+    .string "Wait! Take this too!$"
+
 @ Unused
 FuchsiaCity_WardensHouse_Text_YouHaveTooMuchStuff:: @ 819912B
     .string "なんや　にもつ\n"

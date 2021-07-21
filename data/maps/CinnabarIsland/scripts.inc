@@ -73,7 +73,6 @@ CinnabarIsland_EventScript_ReturnFromSeviiIslands:: @ 8166FA0
 	lockall
 	textcolor 0
 	msgbox CinnabarIsland_Text_IfYouHaveTriPassYouCanGoAgain
-CinnabarIsland_EventScript_SkipSeviiIslands::
 	closemessage
 	applymovement LOCALID_BILL, CinnabarIsland_Movement_BillExit
 	waitmovement 0
@@ -106,55 +105,12 @@ CinnabarIsland_EventScript_BillScene:: @ 8166FCD
 	call_if_unset FLAG_TEMP_2, CinnabarIsland_EventScript_BillApproachPlayer1
 	call_if_set FLAG_TEMP_2, CinnabarIsland_EventScript_BillApproachPlayer2
 	msgbox CinnabarIsland_Text_HeyIfItIsntPlayer
-	checkspeedchoice PLOTLESS, PLOT_KEEP
-	goto_if_ne CinnabarIsland_EventScript_BillPlotlessItems
 	msgbox CinnabarIsland_Text_ComeWithMeToOneIsland, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq CinnabarIsland_EventScript_AgreeSailToOneIsland
 	compare VAR_RESULT, NO
 	goto_if_eq CinnabarIsland_EventScript_DeclineSailToOneIsland
 	end
-
-CinnabarIsland_EventScript_BillPlotlessItems::
-	msgbox CinnabarIsland_Text_WantThisJunk
-	giveitem ITEM_RAINBOW_PASS
-	giveitem ITEM_MYSTIC_TICKET
-	giveitem ITEM_AURORA_TICKET
-	setflag FLAG_SYS_SEVII_MAP_123
-	setflag FLAG_SYS_SEVII_MAP_4567
-	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
-	special SetPostgameFlags
-	setflag FLAG_GOT_RUBY
-	setflag FLAG_SYS_CAN_LINK_WITH_RS
-	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
-	setflag FLAG_SEVII_DETOUR_FINISHED
-	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 4
-	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 7
-	setflag FLAG_HIDE_RUBY
-	setflag FLAG_HIDE_SAPPHIRE
-	setflag FLAG_RECOVERED_SAPPHIRE
-	setflag FLAG_HIDE_ONE_ISLAND_BILL
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_1
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_2
-	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_3
-	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
-	special InitRoamer
-	checkspeedchoice PLOTLESS, PLOT_FULL
-	call_if_eq CinnabarIsland_EventScript_BillFullPlotlessFlags
-	goto CinnabarIsland_EventScript_SkipSeviiIslands
-	end
-
-CinnabarIsland_EventScript_BillFullPlotlessFlags::
-	setflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS
-	setflag FLAG_HIDE_ICEFALL_CAVE_ROCKETS
-	setvar VAR_MAP_SCENE_ICEFALL_CAVE_BACK, 1
-	setflag FLAG_LEARNED_YES_NAH_CHANSEY
-	setflag FLAG_UNLOCKED_ROCKET_WAREHOUSE
-	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
-	setflag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
-	setflag FLAG_HIDE_FIVE_ISLAND_ROCKETS
-	return
 
 CinnabarIsland_EventScript_BillFacePlayer1:: @ 8167032
 	applymovement LOCALID_BILL, Movement_WalkInPlaceFastestUp

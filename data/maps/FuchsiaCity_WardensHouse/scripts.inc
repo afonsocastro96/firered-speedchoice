@@ -30,6 +30,8 @@ FuchsiaCity_WardensHouse_EventScript_GiveGoldTeeth:: @ 816D780
 	giveitem_msg FuchsiaCity_WardensHouse_Text_ReceivedHM04FromWarden, ITEM_HM04
 	setflag FLAG_GOT_HM04
 	removeitem ITEM_GOLD_TEETH, 1
+	checkspeedchoice PLOTLESS, PLOT_KEEP
+	goto_if_ne FuchsiaCity_WardensHouse_EventScript_WardenPlotlessItems
 	release
 	end
 
@@ -53,6 +55,50 @@ FuchsiaCity_WardensHouse_EventScript_ExplainStrength:: @ 816D7FA
 	msgbox FuchsiaCity_WardensHouse_Text_ExplainStrength
 	release
 	end
+
+FuchsiaCity_WardensHouse_EventScript_WardenPlotlessItems::
+	msgbox FuchsiaCity_WardensHouse_Text_PlotlessUnlockSeviiIslands
+	giveitem ITEM_RAINBOW_PASS
+	giveitem ITEM_MYSTIC_TICKET
+	giveitem ITEM_AURORA_TICKET
+	setflag FLAG_SYS_SEVII_MAP_123
+	setflag FLAG_SYS_SEVII_MAP_4567
+	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
+	special SetPostgameFlags
+	setflag FLAG_GOT_RUBY
+	setflag FLAG_SYS_CAN_LINK_WITH_RS
+	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
+	setflag FLAG_SEVII_DETOUR_FINISHED
+	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 4
+	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 7
+	setflag FLAG_HIDE_RUBY
+	setflag FLAG_HIDE_SAPPHIRE
+	setflag FLAG_RECOVERED_SAPPHIRE
+	setflag FLAG_HIDE_ONE_ISLAND_BILL
+	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_1
+	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_2
+	setflag FLAG_TWO_ISLAND_SHOP_EXPANDED_3
+	setvar VAR_MAP_SCENE_TWO_ISLAND, 4
+	special InitRoamer
+	checkspeedchoice PLOTLESS, PLOT_FULL
+	call_if_eq FuchsiaCity_WardensHouse_EventScript_WardenFullPlotlessFlags
+	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 4
+	setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
+	clearflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
+	release
+	end
+
+FuchsiaCity_WardensHouse_EventScript_WardenFullPlotlessFlags::
+	setflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS
+	setflag FLAG_HIDE_ICEFALL_CAVE_ROCKETS
+	setvar VAR_MAP_SCENE_ICEFALL_CAVE_BACK, 1
+	setflag FLAG_LEARNED_YES_NAH_CHANSEY
+	setflag FLAG_UNLOCKED_ROCKET_WAREHOUSE
+	setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE, 1
+	setflag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
+	setflag FLAG_HIDE_FIVE_ISLAND_ROCKETS
+	return
 
 FuchsiaCity_WardensHouse_EventScript_DisplaySign1:: @ 816D804
 	msgbox FuchsiaCity_WardensHouse_Text_MonPhotosFossilsOnDisplay, MSGBOX_SIGN

@@ -66,8 +66,11 @@ CinnabarIsland_Gym_EventScript_DefeatedBlaine:: @ 816DA06
 	setflag FLAG_DEFEATED_BLAINE
 	setflag FLAG_BADGE07_GET
 	setrespawn SPAWN_CINNABAR_ISLAND
+	checkspeedchoice PLOTLESS, PLOT_KEEP
+	goto_if_ne CinnabarIsland_Gym_EventScript_PlotlessHideCinnabarBill
 	setvar VAR_MAP_SCENE_CINNABAR_ISLAND, 1
 	clearflag FLAG_HIDE_CINNABAR_BILL
+CinnabarIsland_Gym_EventScript_PlotlessHideCinnabarBill::
 	set_gym_trainers 7
 	goto CinnabarIsland_Gym_EventScript_GiveTM38
 	end

@@ -171,14 +171,14 @@ void NewGameInitData(void)
         {
             u32 pid;
             u32 otid = T2_READ_32(gSaveBlock2Ptr->playerTrainerId);
-            do {
+            //do {
                 pid = Random32();
-            } while (!IsShinyOtIdPersonality(otid, pid));
+            //} while (!IsShinyOtIdPersonality(otid, pid));
             CreateMon(mon, SPECIES_MEWTWO, 100, 31, TRUE, pid, OT_ID_PLAYER_ID, 0);
-            SetMonMoveSlot(mon, MOVE_PSYCHIC, 0);
-            SetMonMoveSlot(mon, MOVE_THUNDERBOLT, 1);
-            SetMonMoveSlot(mon, MOVE_ICE_BEAM, 2);
-            SetMonMoveSlot(mon, MOVE_FLAMETHROWER, 3);
+            SetMonMoveSlot(mon, MOVE_CUT, 0);
+            SetMonMoveSlot(mon, MOVE_FLY, 1);
+            SetMonMoveSlot(mon, MOVE_SURF, 2);
+            SetMonMoveSlot(mon, MOVE_STRENGTH, 3);
             GiveMonToPlayer(mon);
             Free(mon);
         }

@@ -10,12 +10,34 @@ PalletTown_MapScripts:: @ 816545A
 
 PalletTown_OnTransition:: @ 8165465
 	setworldmapflag FLAG_WORLD_MAP_PALLET_TOWN
+	@ call PalletTown_DebugMode @ Used for Debug, sets most fly points from the get go
 	call_if_set FLAG_PALLET_LADY_NOT_BLOCKING_SIGN, PalletTown_EventScript_TryReadySignLady
 	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 0
 	call_if_eq PalletTown_EventScript_SetSignLadyPos
 	compare VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
 	call_if_eq PalletTown_EventScript_SetSignLadyDone
 	end
+
+PalletTown_DebugMode::
+	setworldmapflag FLAG_WORLD_MAP_CELADON_CITY
+	setworldmapflag FLAG_WORLD_MAP_CERULEAN_CITY
+	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_FIVE_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_FOUR_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_FUCHSIA_CITY
+	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	setworldmapflag FLAG_WORLD_MAP_LAVENDER_TOWN
+	setworldmapflag FLAG_WORLD_MAP_ONE_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_PEWTER_CITY
+	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	setworldmapflag FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F
+	setworldmapflag FLAG_WORLD_MAP_SAFFRON_CITY
+	setworldmapflag FLAG_WORLD_MAP_SEVEN_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_SIX_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_THREE_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_TWO_ISLAND
+	setworldmapflag FLAG_WORLD_MAP_VERMILION_CITY
+	return
 
 PalletTown_EventScript_TryReadySignLady:: @ 8165488
 	goto_if_unset FLAG_OPENED_START_MENU, EventScript_Return
