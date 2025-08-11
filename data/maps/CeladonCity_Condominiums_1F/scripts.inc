@@ -43,7 +43,6 @@ CeladonCity_Condominiums_1F_FullPlotless::
 	setflag FLAG_HIDE_SILPH_ROCKETS
 	setflag FLAG_HIDE_SAFFRON_ROCKETS
 	clearflag FLAG_HIDE_SAFFRON_CIVILIANS
-	setflag FLAG_HIDE_MISC_KANTO_ROCKETS
 	settrainerflag TRAINER_TEAM_ROCKET_GRUNT_12
 	return
 	end

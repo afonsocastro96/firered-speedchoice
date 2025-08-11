@@ -10,7 +10,7 @@ FiveIsland_WaterLabyrinth_EventScript_EggGentleman:: @ 816884E
 	goto_if_set FLAG_NO_ROOM_FOR_TOGEPI_EGG, FiveIsland_WaterLabyrinth_EventScript_ReturnForEgg
 	msgbox FiveIsland_WaterLabyrinth_Text_LetMeTakeLookAtMons
 	specialvar VAR_RESULT, GetLeadMonFriendship
-	compare VAR_RESULT, 6  @ Max friendship
+	compare VAR_RESULT, 1  @ Changed to be 0 friendship instead of max friendship - the gentleman will always give Togepi
 	goto_if_eq FiveIsland_WaterLabyrinth_EventScript_LeadMonMaxFriendship
 	msgbox FiveIsland_WaterLabyrinth_Text_HmmISeeIsee
 	release
