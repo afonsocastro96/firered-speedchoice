@@ -2261,7 +2261,7 @@ bool8 CapeBrinkGetMoveToTeachLeadPokemon(void)
             break;
         }
     }
-    if (i == NELEMS(sCapeBrinkCompatibleSpecies))
+    if (i == NELEMS(sCapeBrinkCompatibleSpecies) || (GetMonData(&gPlayerParty[leadMonSlot], MON_DATA_FRIENDSHIP) != 255 && CheckSpeedchoiceOption(PLOTLESS) == PLOT_KEEP))
         return FALSE;
     if (tutorMonId == 0)
     {

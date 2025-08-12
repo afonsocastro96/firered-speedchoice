@@ -123,3 +123,7 @@ ViridianCity_Text_GymSign:: @ 817E2DB
 ViridianCity_Text_GymDoorsAreLocked:: @ 817E2F5
     .string "VIRIDIAN GYM's doors are locked…$"
 
+ViridianCity_Text_GiveOldRodPlotless::
+    .string "I also found this rod lying\n"
+    .string "around on the floor too.\p"
+    .string "Why don't you keep it?$"

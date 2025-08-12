@@ -46,6 +46,8 @@ MtText_27::
 	call EventScript_ChooseMoveTutorMon
 	compare VAR_RESULT, FALSE
 	goto_if_eq EventScript_ThunderWaveDeclined
+	checkspeedchoice EASY_SWEET_SCENT, EASY_SWEET_SCENT_TUTOR
+	goto_if_eq EventScript_ThunderWaveTaught
 	setflag FLAG_TUTOR_THUNDER_WAVE
 	goto EventScript_ThunderWaveTaught
 	end

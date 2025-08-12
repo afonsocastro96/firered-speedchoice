@@ -250,4 +250,11 @@ ViridianCity_EventScript_DoTutorialBattle:: @ 8165B4C
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 	giveitem ITEM_TEACHY_TV
 	msgbox ViridianCity_Text_WatchThatToLearnBasics
+	checkspeedchoice PLOTLESS, PLOT_KEEP
+	call_if_ne ViridianCity_EventScript_DoTutorialBattlePlotless
+	return
+
+ViridianCity_EventScript_DoTutorialBattlePlotless::
+	msgbox ViridianCity_Text_GiveOldRodPlotless
+	giveitem ITEM_OLD_ROD
 	return
